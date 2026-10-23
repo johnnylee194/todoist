@@ -1,8 +1,11 @@
 import Database from 'better-sqlite3';
 import path from 'path';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Create or connect to the SQLite database
-const dbPath = path.resolve(__dirname, '../data.db');
+const dbPath = process.env.DB_PATH || path.resolve(__dirname, '../data.db');
 export const db = new Database(dbPath, { verbose: console.log });
 
 // Enable foreign keys

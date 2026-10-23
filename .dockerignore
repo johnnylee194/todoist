@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+backend/node_modules
+backend/dist
+web/node_modules
+web/dist
+mobile
+.git
+.gitignore
+README.md
+repomix.config.json
