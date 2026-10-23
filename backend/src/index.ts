@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import { db } from './database';
 import syncRouter from './routes/sync';
 
@@ -18,6 +19,15 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/sync', syncRouter);
+
+// Serve static files from the public directory
+const publicDir = path.join(process.cwd(), 'public');
+app.use(express.static(publicDir));
+
+// Catch-all route to serve index.html for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicDir, 'index.html'));
+});
 
 // Global error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

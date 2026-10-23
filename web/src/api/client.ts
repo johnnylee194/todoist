@@ -1,5 +1,4 @@
-
-const API_URL = 'http://localhost:3000/api/sync';
+const API_URL = '/api/sync';
 const MOCK_TOKEN = 'mock-user-123';
 
 export const fetchData = async () => {
